@@ -20,7 +20,7 @@
         $addressStreet = $user->getAddressStreet();
         $addressZipcode = $user->getAddressZipcode();
         $addressCity = $user->getAddressCity();
-        $address = "{$user->getAddressStreet()}, {$user->getAddressZipcode()} {$user->getAddressCity()}";
+        $address = "{$addressStreet}, {$addressZipcode} {$addressCity}";
         $companyName = $user->getCompanyName();
 
         $row = <<<ROW
