@@ -7,3 +7,9 @@ abstract class Repository
     abstract public function delete($entity);
     abstract public function update($entity);
 }
+
+abstract class FileRepository extends Repository
+{
+    abstract protected function loadDataFromFile();
+    abstract protected function saveDataToFile();
+}
