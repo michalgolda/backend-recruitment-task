@@ -4,7 +4,7 @@ require_once __DIR__ . '/../entities/user.php';
 
 class UserJSONRepository extends FileRepository
 {
-    public function __construct(private string $filePath, private $users = [],)
+    public function __construct(private string $filePath, private $users = [])
     {
 
         $this->users = $users;
