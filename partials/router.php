@@ -4,6 +4,7 @@ require_once __DIR__ . '/utilities/httpError.php';
 class Router
 {
     private $routes = [];
+    private $notFoundHandler = 'httpNotFound';
 
     public function addRoute($method, $path, $action)
     {
@@ -18,10 +19,6 @@ class Router
     {
         foreach ($this->routes as $route) {
             if ($route['method'] == $method && $route['path'] == $path) {
-                if ($route['method'] != $method) {
-                    httpBadRequest();
-                }
-
                 $action = $route['action'];
                 $requestData = $route['method'] == 'GET' ? $_GET : $_POST;
                 $action($requestData);
@@ -30,6 +27,11 @@ class Router
             }
         }
 
-        httpNotFound();
+        call_user_func($this->notFoundHandler);
+    }
+
+    public function setNotFoundHandler($handler)
+    {
+        $this->notFoundHandler = $handler;
     }
 }
