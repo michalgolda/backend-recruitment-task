@@ -14,5 +14,8 @@ $mainRouter = new Router();
 $mainRouter->addRoute('GET', '/', [$userController, 'main']);
 $mainRouter->addRoute('POST', '/add', [$userController, 'addUser']);
 $mainRouter->addRoute('POST', '/delete', [$userController, 'deleteUser']);
+$mainRouter->setNotFoundHandler(function () {
+    return template('404');
+});
 
 $mainRouter->handleRequest($_SERVER['REQUEST_METHOD'], $_SERVER['REQUEST_URI']);
