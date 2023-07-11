@@ -11,8 +11,8 @@ $userService = new UserService($userRepository);
 $userController = new UserController($userService);
 
 $mainRouter = new Router();
-$mainRouter->addRoute('GET', '/', [$userController, 'main'], "index");
-$mainRouter->addRoute('POST', '/add', [$userController, 'addUser'], "addUser");
-$mainRouter->addRoute('POST', '/delete', [$userController, 'deleteUser'], "deleteUser");
+$mainRouter->addRoute('GET', '/', [$userController, 'main']);
+$mainRouter->addRoute('POST', '/add', [$userController, 'addUser']);
+$mainRouter->addRoute('POST', '/delete', [$userController, 'deleteUser']);
 
 $mainRouter->handleRequest($_SERVER['REQUEST_METHOD'], $_SERVER['REQUEST_URI']);
